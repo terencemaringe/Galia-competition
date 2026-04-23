@@ -3,7 +3,7 @@ name: Galia Competitive Newsletter (MVP)
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 6 * * *"   # tous les jours à 06:00 UTC (~07:00 Paris)
+    - cron: "0 6 * * 1"   # tous les jours à 06:00 UTC (~07:00 Paris)
 
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
