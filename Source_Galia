@@ -1,0 +1,71 @@
+sources:
+  # --- Gas World (très actif) ---
+  - name: "Gas World Decarbonisation"
+    type: "rss"
+    url: "https://www.gasworld.com/topics/zones/decarbonisation-zone/"
+
+  # --- Recharge News / ENR ---
+  - name: "Recharge News"
+    type: "rss"
+    url: "https://www.rechargenews.com/?zephr_sso_ott=k97z5z/"
+
+   # --- Green Univers (ENR, BESS, Financement) ---
+  - name: "Green Univers ENR (news)"
+    type: "rss"
+    url: "https://www.greenunivers.com/category/energies/"
+ 
+  - name: "Green Univers Financement (news)"
+    type: "rss"
+    url: "https://www.greenunivers.com/category/financement/"
+ 
+   # --- CF News Infra ---
+  - name: "CF News Infra ENR (news)"
+    type: "rss"
+    url: "https://www.cfnewsinfra.net/index/Types-d-actif/Energies-renouvelables"
+ 
+  # --- Bioenergy / biogaz (utile gas vert / RNG) ---
+  - name: "Bioenergy Insight - News"
+    type: "rss"
+    url: "https://www.bioenergy-news.com/news_feed/"
+ 
+  # --- “Market wire” Renewables Now (souvent le plus deal-friendly) ---
+  - name: "Renewables Now - Europe"
+    type: "rss"
+    url: "https://renewablesnow.com/news/news_feed/?region=europe"
+ 
+  - name: "Renewables Now - Bioenergy"
+    type: "rss"
+    url: "https://renewablesnow.com/news/news_feed/?source=bioenergy"
+ 
+  # --- Policy / context (moins deals, mais utile) ---
+  - name: "Clean Energy Wire"
+    type: "rss"
+    url: "https://www.cleanenergywire.org/rss.xml"
+ 
+competitors:
+  - "SWEN"
+  - "SWING"
+  - "Mirova"
+  - "Eiffel"
+  - "RGREEN"
+  - "Omnes"
+  - "Ardian"
+  - "InfraVia"
+  - "Marguerite"
+  - "Asterion"
+  - "Kommunalkredit"
+  - "BlackRock"
+  - "Global Infrastructure Partners"
+  - "Neo Energy Group"
+  - "Neo Bio Energy"
+  - "Gasela"
+  - "Enricom Biogas" 
+  - "Ara (Suez)"
+  - "Biorig"
+  - "PGB"
+  - "Polska Grupa Biogazova"
+  - "Total Energies"
+  - "HitecVision"
+  - "ID Energy" 
+  - "Orlen"
+  - "Dynamic Biogas"
