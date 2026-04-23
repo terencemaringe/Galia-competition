@@ -44,7 +44,7 @@ Sous-segment (bucket) :
 - "OTHER" sinon ou montant inconnu
 Champs clés : maturity_years, pricing (margin/spread si mentionné), stage.
 
-2) DETTE SENIOR_GAS_VERT
+2) DETTE SENIOR_GAZ_VERT
 Déclenchement :
 - maturité > 5 ans OU mention senior / long-term / bank facility / bank loan long term (>60 mois).
 - dette lié à biométhane / RNG / biogaz / méthanisation / renewable gas / e-methane
@@ -55,7 +55,7 @@ Sous-segment (bucket) :
 - "OTHER" sinon ou montant inconnu
 Champs clés : maturity_years, pricing (margin/spread si mentionné), stage.
 
-3) EQUITY_GAS_VERT
+3) EQUITY_GAZ_VERT
 Déclenchement :
 - equity lié à biométhane / RNG / biogaz / méthanisation / renewable gas / e-methane
 - montant <= 100 M€ si mentionné (sinon accepter)
@@ -80,7 +80,7 @@ Déclenchement :
 
 EXCLUSION FUNDRAISING_NEWS (OBLIGATOIRE)
 - Si l’objet principal est une société/projet qui lève de la dette ou de l’equity (corporate funding round, IPO, project financing), ce n’est PAS FUNDRAISING_NEWS.
-  => classer dans DEVELOPER_NEWS ou EQUITY_GAS_VERT ou DETTE BRIDGE_GAS_VERT ou DETTE SENIOR_GAS_VERT selon le cas.
+  => classer dans DEVELOPER_NEWS ou EQUITY_GAZ_VERT ou DETTE BRIDGE_GAS_VERT ou DETTE SENIOR_GAZ_VERT selon le cas.
 
 ADVISERS / CONSEILS (à renseigner si mentionné)
 - advisor_financial : nom(s) du conseil financier / bank / M&A advisor / debt advisor / arranger
@@ -149,12 +149,12 @@ STRUCTURE DE L’EMAIL (5 sections)
 - Colonnes tableau:
   Date | Concurrent | Projet/Société | Pays | Techno | Montant (EUR) | Pricing | Conseil (Fin/Legal/Tech) | Maturité | Stade | Source
 
-2) DETTE SENIOR_GAS_VERT
+2) DETTE SENIOR_GAZ_VERT
 - sous-sections : 100–300 M€, 50–100 M€, 20–50 M€
 - Colonnes tableau:
   Date | Concurrent | Projet/Société | Pays | Techno | Montant (EUR) | Pricing | Conseil (Fin/Legal/Tech) | Maturité | Stade | Source
 
-3) EQUITY_GAS_VERT
+3) EQUITY_GAZ_VERT
 - sous-sections : PV, Wind, BESS
 - Colonnes tableau (mêmes que ci-dessus, maturité peut être "n/a")
 
@@ -379,7 +379,7 @@ def make_fallback_newsletter_html(week, rows):
     def esc(x):
         return (str(x) if x is not None else "n/a").replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
 
-    parts = [f"<h1>Newsletter Infra — Semaine {week}</h1>"]
+    parts = [f"<h1>Newsletter Galia Competition — Week {week}</h1>"]
     parts.append("<p><b>Note:</b> génération IA indisponible. Version fallback.</p>")
 
     def subsection(title):
@@ -441,20 +441,20 @@ def make_fallback_newsletter_html(week, rows):
             )
         parts.append("</table>")
 
-    parts.append("<h2>1) DETTE BRIDGE (≤5 ans)</h2>")
-    table_deals("100–300 M€", lambda r: r.get("Segment") == "DETTE_BRIDGE" and r.get("SubSegment") == "100_300")
-    table_deals("50–100 M€", lambda r: r.get("Segment") == "DETTE_BRIDGE" and r.get("SubSegment") == "50_100")
-    table_deals("20–50 M€", lambda r: r.get("Segment") == "DETTE_BRIDGE" and r.get("SubSegment") == "20_50")
+    parts.append("<h2>1) DETTE BRIDGE GAZ VERT</h2>")
+    table_deals("100–300 M€", lambda r: r.get("Segment") == "DETTE BRIDGE_GAS_VERT" and r.get("SubSegment") == "100_300")
+    table_deals("50–100 M€", lambda r: r.get("Segment") == "DETTE BRIDGE_GAS_VERT" and r.get("SubSegment") == "50_100")
+    table_deals("20–50 M€", lambda r: r.get("Segment") == "DETTE BRIDGE_GAS_VERT" and r.get("SubSegment") == "20_50")
 
-    parts.append("<h2>2) EQUITY ENR (&lt;100 M€)</h2>")
-    table_deals("PV", lambda r: r.get("Segment") == "EQUITY_ENR" and r.get("SubSegment") == "PV")
-    table_deals("Wind", lambda r: r.get("Segment") == "EQUITY_ENR" and r.get("SubSegment") == "WIND")
-    table_deals("BESS", lambda r: r.get("Segment") == "EQUITY_ENR" and r.get("SubSegment") == "BESS")
+    parts.append("<h2>2) DETTE SENIOR GAZ VERT</h2>")
+    table_deals("PV", lambda r: r.get("Segment") == "DETTE SENIOR_GAZ_VERT" and r.get("SubSegment") == "PV")
+    table_deals("Wind", lambda r: r.get("Segment") == "DETTE SENIOR_GAZ_VERT" and r.get("SubSegment") == "WIND")
+    table_deals("BESS", lambda r: r.get("Segment") == "DETTE SENIOR_GAZ_VERT" and r.get("SubSegment") == "BESS")
 
-    parts.append("<h2>3) EQUITY GAS VERT (&lt;100 M€)</h2>")
-    table_deals("Gas vert", lambda r: r.get("Segment") == "EQUITY_GAS_VERT")
+    parts.append("<h2>3) EQUITY GAZ VERT (&lt;100 M€)</h2>")
+    table_deals("Gas vert", lambda r: r.get("Segment") == "EQUITY_GAZ_VERT")
 
-    parts.append("<h2>4) FUNDRAISING & NEWS FONDS INFRA</h2>")
+    parts.append("<h2>4) FUNDRAISING NEWS</h2>")
     table_fundraising("Fonds/GP uniquement", lambda r: r.get("Segment") == "FUNDRAISING_NEWS")
 
     return "\n".join(parts)
